@@ -1,3 +1,6 @@
+<%@page import="services.ProduitServices"%>
+<%@page import="entities.Produit"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,10 +103,7 @@
     </nav>
 
 
-
-
-
-    <div class="pc-container">
+    class="pc-container">
         <div class="pcoded-content">
             <!-- [ breadcrumb ] start -->
             <div class="page-header">
@@ -170,10 +170,7 @@
 
 
 
-
-
-
-
+       
     <!-- Required Js -->
     <script src="assets/js/vendor-all.min.js"></script>
     <script src="assets/js/plugins/bootstrap.min.js"></script>

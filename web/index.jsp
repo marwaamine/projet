@@ -1,3 +1,6 @@
+<%@page import="services.ProduitServices"%>
+<%@page import="entities.Produit"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,38 +129,39 @@
 					<div class="card-header">
 						<h5>Plus recent</h5>
 					</div>
-					<div class="card-body">
-						<div id="carouselExampleDark" class="carousel carousel-dark slide" data-ride="carousel">
-							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleDark" data-slide-to="0" class=""></li>
-								<li data-target="#carouselExampleDark" data-slide-to="1" class=""></li>
-								<li data-target="#carouselExampleDark" data-slide-to="2" class="active"></li>
-							</ol>
-							<div class="carousel-inner">
-								<div class="carousel-item">
-									<img class="img-fluid d-block w-100" src="" alt="First slide">
-									<div class="carousel-caption d-none d-md-block">
-									</div>
-								</div>
-								<div class="carousel-item">
-									<img class="img-fluid d-block w-100" src="" alt="Second slide">
-									<div class="carousel-caption d-none d-md-block">
-									</div>
-								</div>
-								<div class="carousel-item active">
-									<img class="img-fluid d-block w-100" src="" alt="Third slide">
-									<div class="carousel-caption d-none d-md-block">
-									</div>
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-							<a class="carousel-control-next" href="#carouselExampleDark" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-						</div>
-					</div>
+            <form action="AjouterPanier" method="GET">
+                <%!int i = 0;%>
+                <%
+                    HttpSession sessio = request.getSession();
+                    List<Produit> produits = (List<Produit>) sessio.getAttribute("listpr");
+                    if (produits != null) {
+                        i = produits.size();
+                    }
+                %>
+                <div style="text-align: right;">
+                    Panier :<a href="panier.jsp"> <i data-feather="shopping-cart"></i> <%= i%></a>
+                </div>
+                <div>
+                    <%
+                        ProduitServices p = new ProduitServices();
+                        for (Produit pp : p.findAllProduits()) {
+                    %>
+                    <figure>
+                        <img src=<%="ressource\\images\\" + pp.getImage()%>><br/>
+                        <strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;
+                        <br>
+                        <strong>Prix :&nbsp;<%= pp.getPrix()%>&nbspDH</strong><br>    
+
+                        <button><a name="id" href="AjouterPanier?id=<%= pp.getId()%>" >Ajouter au panier</a></button>
+                    </figure>
+                    <%}%>
+                </div>
+
+            </form>
 				</div>
-                <!-- [ sample-page ] end -->
+                
             </div>
-            <!-- [ Main Content ] end -->
+            
         </div>
     </div>
 
