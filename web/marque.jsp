@@ -1,3 +1,6 @@
+<%@page import="services.ProduitServices"%>
+<%@page import="entities.Produit"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,58 +118,37 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-4">
+ 
+<form action="AjouterPanier" method="GET">
+                <%!int i = 0;%>
+                <%
+                    HttpSession sessio = request.getSession();
+                    List<Produit> produits = (List<Produit>) sessio.getAttribute("listpr");
+                    if (produits != null) {
+                        i = produits.size();
+                    }
+                %>
+                <div>
+                    <%
+                        ProduitServices p = new ProduitServices();
+                        for (Produit pp : p.findAllProduits()) {
+                    %>
+                    <figure>
+                        <div class="col-sm-12 col-md-4">
     <div class="card text-center">
         <div class="card-body">
-            <h5 class="card-title">Dell</h5>
-            <a href="#!" class="btn  btn-primary">Afficher les produits</a>
+            <h5 class="card-title"> <strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;</h5>
+            <a name="id" href="#?id=<%= pp.getId()%>" class="btn  btn-primary">Afficher les produits</a>
         </div>
     </div>
 </div>
-<div class="col-sm-12 col-md-4">
-    <div class="card text-center">
-    <div class="card-body">
-        <h5 class="card-title">Hp</h5>
-        <a href="#!" class="btn  btn-primary">Afficher les produits</a>
-    </div>
-</div>
-</div>
-    <div class="col-sm-12 col-md-4">
-    <div class="card text-center">
-        <div class="card-body">
-            <h5 class="card-title">Samsung</h5>
-            <a href="#!" class="btn  btn-primary">Afficher les produits</a>
-        </div>
-    </div>
-</div>
-</div>
+                        
+                    </figure>
+                    <%}%>
+                </div>
 
-<div class="row">
-    <div class="col-sm-12 col-md-4">
-<div class="card text-center">
-    <div class="card-body">
-        <h5 class="card-title">OPPO</h5>
-        <a href="#!" class="btn  btn-primary">Afficher les produits</a>
-    </div>
+            </form>
 </div>
-</div>
-<div class="col-sm-12 col-md-4">
-<div class="card text-center">
-<div class="card-body">
-    <h5 class="card-title">Redmi</h5>
-    <a href="#!" class="btn  btn-primary">Afficher les produits</a>
-</div>
-</div>
-</div>
-<div class="col-sm-12 col-md-4">
-<div class="card text-center">
-    <div class="card-body">
-        <h5 class="card-title">Accer</h5>
-        <a href="#!" class="btn  btn-primary">Afficher les produits</a>
-    </div>
-</div>
-</div>
-</div>
-</div>
+                </div>
 </div>
 </div>

@@ -1,3 +1,6 @@
+<%@page import="services.ProduitServices"%>
+<%@page import="entities.Produit"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,35 +117,39 @@
                     </div>
                 </div>
             </div>
+            
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="card text-white bg-warning ">
-                        <div class="card-header">Ordinateurs</div>
-                        <div class="card-body">
-                            <h5 class="card-title text-white">Dell probook.. <a href="#" class="card-link">+19 autres</a></h5>
-                        </div>
+                <form action="AjouterPanier" method="GET">
+                <%!int i = 0;%>
+                <%
+                    HttpSession sessio = request.getSession();
+                    List<Produit> produits = (List<Produit>) sessio.getAttribute("listpr");
+                    if (produits != null) {
+                        i = produits.size();
+                    }
+                %>
+                <div>
+                    <%
+                        ProduitServices p = new ProduitServices();
+                        for (Produit pp : p.findAllProduits()) {
+                    %>
+                    <figure>
+                        <div class="col-sm-4">
+                    <div class="card text-white bg-info ">
+                        <div class="card-header"><strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;</div>
+                        <a name="id" href="#?id=<%= pp.getId()%>" class="btn  btn-secondary">Afficher les produits</a>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="card text-white bg-danger ">
-                        <div class="card-header">Telephones</div>
-                        <div class="card-body">
-                            <h5 class="card-title text-white">Iphone 13.. <a href="#" class="card-link">+39 autres</a></h5>
-                        </div>
-                    </div>
+     
+                    </figure>
+                    <%}%>
                 </div>
 
+            </form>
+
             </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="card text-white bg-info ">
-                        <div class="card-header">AirPods</div>
-                        <div class="card-body">
-                            <h5 class="card-title text-white">Samsung.. <a href="#" class="card-link">+29 autres</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            
         </div>
         <script src="assets/js/vendor-all.min.js"></script>
         <script src="assets/js/plugins/bootstrap.min.js"></script>
