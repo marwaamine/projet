@@ -103,7 +103,7 @@
     </nav>
 
 
-    class="pc-container">
+    <div class="pc-container">
         <div class="pcoded-content">
             <!-- [ breadcrumb ] start -->
             <div class="page-header">
@@ -141,20 +141,14 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Mark</td>
-                                        <td>60$</td>
-                                        <td><button type="button" class="btn  btn-danger">supprimer</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Mark</td>
-                                        <td>120$</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td><button type="button" class="btn  btn-danger">supprimer</button></td>
                                     </tr>
                                     <tr class="table-active">
                                         <td colspan="2">Total</td>
-                                        <td>180$</td>
+                                        <td></td>
                                         <td><button type="button" class="btn  btn-success">valider</button></td>
                                     </tr>
                                 </tbody>
@@ -162,9 +156,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- [ sample-page ] end -->
             </div>
-            <!-- [ Main Content ] end -->
         </div>
     </div>
 
