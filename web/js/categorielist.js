@@ -1,24 +1,36 @@
-$(document).ready(function () {      
+$(document).ready(function () {  
+    function init() {    
        $.ajax({
             url: "admin/listeCategories",
-            data: {categories: $(this).val()},
             success: function (data, textStatus, jqXHR) {
-                remplirUser(data);
+                remplirCategorie(data);
                 console.table(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log("erreur");
             }
         });
- ;
+    }
 
-    function remplirUser(data){
+    init();
+
+    function remplirCategorie(data){
         var ligne  = "";
-        var content = $("#content");
+        var content = $("#content0");
         data.forEach(function(e){
-            ligne+="<tr><td>"+e+"</td><td> <button >Supprimer</button> </td></tr>";
+            ligne+="<tr><td>"+e.nom+"</td><td> <button class='supprimercategorie btn' data-id=" + e.id + ">Supprimer</button> </td></tr>";
         });
         content.html(ligne);
+        $(".supprimercategorie").click(function () {
+            var id = $(this).attr("data-id")
+            $.ajax({
+                url: 'admin/deleteCategorie',
+                data: {id: id},
+                success: function (response) {
+                    remplirCategorie(response);
+                }
+            });
+        })        
     }
     
     });
