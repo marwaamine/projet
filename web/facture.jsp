@@ -57,8 +57,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nombre de produits</th>
-                                        <th>Montant</th>
-                                        <th>Etat</th>
+                                        <th>Montant</th>                                        
                                         <th>Date</th>
                                     </tr>
                                 </thead>
@@ -66,8 +65,7 @@
                                     <tr>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td></td>                                      
                                         <td></td>
                                         
                                     </tr>

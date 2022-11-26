@@ -58,7 +58,7 @@
                             <table class="table table-inverse">
                                 <thead>
                                     <tr>
-                                        <th>unite</th>
+                                        <th>quantite</th>
                                         <th>produit</th>
                                         <th>prix</th>
                                         <th>actions</th>
