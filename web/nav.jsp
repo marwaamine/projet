@@ -1,10 +1,10 @@
 <nav class="pc-sidebar ">
     <div class="navbar-wrapper">
         <div class="m-header">
+            <p class="light">HAB SHOP</p>
             <a href="index.html" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <img src="assets/images/logo.sv" alt="" class="logo logo-lg">
-                <img src="assets/images/logo-sm.sv" alt="" class="logo logo-sm">
+               
             </a>
         </div>
         <div class="navbar-content ps ps--active-y">
