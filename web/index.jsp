@@ -12,7 +12,8 @@
     <meta name="description" content="" />
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
-
+    <script src="js/jquery-3.6.1.min.js" type="text/javascript"></script>
+    <script src="js/panier.js" type="text/javascript"></script>
     <!-- Favicon icon -->
     <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
 
@@ -61,7 +62,6 @@
 					<div class="card-header">
 						<h5>Plus recent</h5>
 					</div>
-            <form action="AjouterPanier" method="GET">
                 <%!int i = 0;%>
                 <%
                     HttpSession sessio = request.getSession();
@@ -83,13 +83,12 @@
                         <strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;
                         <br>
                         <strong>Prix :&nbsp;<%= pp.getPrix()%>&nbspDH</strong><br>    
-
-                        <button><a name="id" href="AjouterPanier?id=<%= pp.getId()%>" >Ajouter au panier</a></button>
+                        <input type ="number" data-id="<%=pp.getId()%>" class="quantity-input" >
+                        <button class="add-to-cart" data-id="<%=pp.getId()%>">Ajouter au panier</button>
                     </figure>
                     <%}%>
                 </div>
-
-            </form>
+ 
 				</div>
                 
             </div>

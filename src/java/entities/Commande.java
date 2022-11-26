@@ -6,18 +6,21 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
  *
- * @author faouzia
+ * @author 
  */
 @Entity
 public class Commande implements Serializable{
@@ -28,10 +31,11 @@ public class Commande implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date date;
     @ManyToOne
-    private Client client ;
+    private Client client;
     @ManyToOne
     private Facture facture;
-
+    @OneToMany
+    private List<LigneCommande> ligneCommandes ;
     public Commande() {
     }
 
@@ -39,7 +43,9 @@ public class Commande implements Serializable{
         this.date = date;
         this.client = client;
         this.facture = facture;
+        this.ligneCommandes= new ArrayList<>();
     }
+    
 
     public int getId() {
         return id;
@@ -71,6 +77,14 @@ public class Commande implements Serializable{
 
     public void setFacture(Facture facture) {
         this.facture = facture;
+    }
+
+    public List<LigneCommande> getLigneCommandes() {
+        return ligneCommandes;
+    }
+
+    public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+        this.ligneCommandes = ligneCommandes;
     }
     
     
