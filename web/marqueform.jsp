@@ -3,12 +3,15 @@
    <head>
       <meta charset="utf-8">
       <title>Admin- Gestion des marques</title>
-      <link href="style/forms.css" rel="stylesheet" type="text/css"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="style/forms.css" rel="stylesheet" type="text/css"/>
    </head>
    <body>
    
         <%@include file="sidebar.html" %>
+        
+
+         
     <div class="container">
         <div class="text">Ajouter une marque</div>
         <form action="admin/AddMarque" method="GET">
@@ -31,5 +34,6 @@
                 </div>
         </form>
      </div>
+
    </body>
 </html>

@@ -3,7 +3,7 @@ $(document).ready(function () {
         url: "admin/listMarques",
         success: function (data, textStatus, jqXHR) {
            remplir(data);
-          // console.table(data);
+           //console.table(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("erreur");
@@ -13,7 +13,7 @@ $(document).ready(function () {
         var liste = $("#marques");
         var option = "";
         for (i = 0; i < data.length; i++) {
-            option += "<option value = " + data[i] + ">" + data[i]+ "</option>";
+            option += "<option value = " + data[i].id + ">" + data[i].nom + "</option>";
         }
         liste.html(option);
     }
