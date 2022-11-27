@@ -79,7 +79,7 @@
                         for (Produit pp : p.findAllProduits()) {
                     %>
                     <figure>
-                        <img src=<%="ressource\\images\\" + pp.getImage()%>><br/>
+                        <img style="width: 150px; height: 150px;" src=<%="ressource\\images\\" + pp.getImage()%>><br/>
                         <strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;
                         <br>
                         <strong>Prix :&nbsp;<%= pp.getPrix()%>&nbspDH</strong><br>    

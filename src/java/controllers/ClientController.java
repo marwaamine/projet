@@ -89,8 +89,7 @@ public class ClientController extends HttpServlet {
         response.setContentType("application/json");
         HttpSession session = request.getSession();
         int id_produit = Integer.parseInt(request.getParameter("id"));
-        System.out.println(id_produit);
-
+        //System.out.println(id_produit);
         p = produitServices.findProduitById(id_produit);
         System.out.println(p);
         int quantite = Integer.parseInt(request.getParameter("quantite"));
@@ -99,15 +98,16 @@ public class ClientController extends HttpServlet {
         LigneCommande lc = new LigneCommande(prixVente, quantite, p, (Commande) session.getAttribute("cart"));
         Commande c = (Commande) session.getAttribute("cart");
         List<LigneCommande> lis = c.getLigneCommandes();
-        System.out.println(c.getLigneCommandes());
+        //System.out.println(c.getLigneCommandes());
         if (lis == null) {
             c.setLigneCommandes(new ArrayList<>());
         }
         c.getLigneCommandes().add(lc);
         Gson gson = new Gson();
         CommandeDTO m = new CommandeDTO(c);
-        System.out.println(m);
+       // System.out.println(m);
         response.getWriter().write(gson.toJson(m));
+        
     }
 
     @Override

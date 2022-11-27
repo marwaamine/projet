@@ -93,6 +93,8 @@ public class UserController extends HttpServlet {
                 break;
                 case "verifierCode" : verifierCode(request,response);
                 break;
+                case "logout" : logout(request,response);
+                break;   
                 default : login(request,response);
                 break;  
             }
@@ -154,4 +156,11 @@ public class UserController extends HttpServlet {
         }
 
     }
+     private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("login.jsp");
+    }
+    
+    
 }
