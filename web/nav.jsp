@@ -1,38 +1,113 @@
 
-<head>
-    <title>Site E-commerce</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="">
-    <meta name="author" content="Phoenixcoded" />
-    <script src="js/jquery-3.6.1.min.js" type="text/javascript"></script>
-    <script src="js/panier.js" type="text/javascript"></script>
-    <!-- Favicon icon -->
-    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+<header class="pc-header ">
+    <div class="header-wrapper">
+        <div class="mr-auto pc-mob-drp">
+            <ul class="list-unstyled">
+                <li class="dropdown pc-h-item">
+                    <a class="pc-head-link active dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        Level
+                    </a>
+                    <div class="dropdown-menu pc-h-dropdown" style="">
+                        <a href="#!" class="dropdown-item">
+                            <i class="material-icons-two-tone">account_circle</i>
+                            <span>My Account</span>
+                        </a>
+                        <div class="pc-level-menu">
+                            <a href="#!" class="dropdown-item">
+                                <i class="material-icons-two-tone">list_alt</i>
+                                <span class="float-right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right mr-0"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                                <span>Level2.1</span>
+                            </a>
+                            <div class="dropdown-menu pc-h-dropdown">
+                                <a href="#!" class="dropdown-item">
+                                    <i class="fas fa-circle"></i>
+                                    <span>My Account</span>
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Settings</span>
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Support</span>
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="material-icons-two-tone">settings</i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="material-icons-two-tone">support</i>
+                            <span>Support</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="material-icons-two-tone">https</i>
+                            <span>Lock Screen</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="material-icons-two-tone">chrome_reader_mode</i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="ml-auto">
+            <ul class="list-unstyled">
+                <li class="dropdown pc-h-item">
+                    <a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="material-icons-two-tone">search</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right pc-h-dropdown drp-search" style="">
+                        <form class="px-3">
+                            <div class="form-group mb-0 d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li class="dropdown pc-h-item">
+                    <a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
+                            <span>
+                                <span class="user-name">Joseph William</span>
+                                <span class="user-desc">Administrator</span>
+                            </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right pc-h-dropdown">
+                        <div class=" dropdown-header">
+                            <h5 class="text-overflow m-0"><span class="badge bg-light-primary"><a href="https://gumroad.com/dashboardkit" target="_blank">Upgrade to Pro</a></span></h5>
+                        </div>
 
-    <!-- font css -->
-    <link rel="stylesheet" href="assets/fonts/feather.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome.css">
-    <link rel="stylesheet" href="assets/fonts/material.css">
+                        <a href="auth-signin.html" class="dropdown-item">
+                            <i class="material-icons-two-tone">chrome_reader_mode</i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-    <!-- vendor css -->
-    <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
-
-</head>
-
-
-
-
+    </div>
+</header>
 
 <nav class="pc-sidebar ">
-    <div class="navbar-wrapper">
-        <div class="m-header">
-            <p class="light">HAB SHOP</p>
+    <div class="navbar-wrapper" >
+        <div class="m-header" >
+            <p class="text-white" style="font-size: 1.5em">HAB SHOP</p>
             <a href="index.html" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-               
+
             </a>
         </div>
         <div class="navbar-content ps ps--active-y">
@@ -53,9 +128,9 @@
                     <a href="panier.jsp" class="pc-link "><span class="pc-micon"><i
                                 class="material-icons-two-tone">business_center</i></span><span
                             class="pc-mtext">Panier</span><span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="feather feather-chevron-right">
+                                                                                  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                                  class="feather feather-chevron-right">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg></span></a>
                 </li>
@@ -100,3 +175,6 @@
         </div>
     </div>
 </nav>
+
+
+

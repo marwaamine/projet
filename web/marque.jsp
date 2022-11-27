@@ -68,7 +68,7 @@
                         <div class="col-sm-12 col-md-4">
     <div class="card text-center">
         <div class="card-body">
-            <h5 class="card-title"> <strong>Marque:&nbsp; <%= pp.getMarque()%></strong>&nbsp;&nbsp;</h5>
+            <h5 class="card-title"> <strong>Marque:&nbsp; <%= pp.getMarque().getNom()%></strong>&nbsp;&nbsp;</h5>
             <a name="id" href="#?id=<%= pp.getId()%>" class="btn  btn-primary">Afficher les produits</a>
         </div>
     </div>
