@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controllers;
 
 import com.google.gson.Gson;
 import entities.Categorie;
 import entities.Marque;
 import entities.Produit;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +18,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import services.CategorieServices;
 import services.MarqueServices;
 import services.ProduitServices;
@@ -30,6 +31,16 @@ import services.ProduitServices;
  */
 @WebServlet("/admin/*")
 public class AdminController extends HttpServlet {
+      String nom ;
+     String designation ;
+     String description ;
+     double prix ;
+     int unite ;
+      int idmarque ;
+      int idcategorie;
+    String path;
+    
+    private String UPLOAD_DIRECTORY;
 
     private ProduitServices produitServices;
     private Marque marque;
@@ -116,18 +127,77 @@ public class AdminController extends HttpServlet {
     }
 
     private void AddProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String nom = request.getParameter("nom");
-        String designation = request.getParameter("designation");
-        String description = request.getParameter("description");
-        double prix = Double.parseDouble(request.getParameter("prix"));
-        String image = request.getParameter("image");
-        int unite = Integer.parseInt(request.getParameter("unite"));
-        Marque marques = (new MarqueServices()).findMarqueById(Integer.parseInt(request.getParameter("marques")));
-        Categorie categories = (new CategorieServices()).findCategorieById(Integer.parseInt(request.getParameter("categories")));
-
-        if (produitServices.AddProduit(new Produit(nom, description, designation, prix, image, unite, marques, categories))) {
-            response.getWriter().append("Produit bien ajouté");
+    UPLOAD_DIRECTORY = getServletContext().getRealPath("/").replace("build\\", "") + "ressource" + File.separator + "images";
+          if (ServletFileUpload.isMultipartContent(request)) {
+            try {
+                List<FileItem> multiparts = new ServletFileUpload(
+                        new DiskFileItemFactory()).parseRequest(request);
+               String name = null;
+                for (FileItem item : multiparts) {
+                    if (!item.isFormField()) {  
+                        name = new File(item.getName()).getName();
+                        item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
+                        path = UPLOAD_DIRECTORY + File.separator + name;
+                    } else {
+                        InputStream input = item.getInputStream(); 
+                        if (item.getFieldName().equals("nom")) {
+                            byte[] str = new byte[input.available()];
+                            input.read(str);
+                            nom= new String(str, "UTF8");
+                        }
+                          if (item.getFieldName().equals("designation")) {
+                            byte[] str = new byte[input.available()];
+                            input.read(str);
+                            designation= new String(str, "UTF8");
+                        }
+                            if (item.getFieldName().equals("description")) {
+                            byte[] str = new byte[input.available()];
+                            input.read(str);
+                           description= new String(str, "UTF8");
+                        }
+                             if (item.getFieldName().equals("prix")) {
+                            byte[] str = new byte[input.available()];
+                            input.read(str);
+                            prix = Double.parseDouble(new String(str, "UTF8"));
+                        }
+                             if (item.getFieldName().equals("unite")) {
+                            byte[] str = new byte[input.available()];
+                            input.read(str);
+                            unite = Integer.parseInt(new String(str, "UTF8"));
+                        }
+                             if (item.getFieldName().equals("categories")) {
+                            byte[] str = new byte[input.available()];
+                            input.read(str);
+                            idcategorie= Integer.parseInt(new String(str, "UTF8"));
+                        }
+                             if (item.getFieldName().equals("marques")) {
+                            byte[] str = new byte[input.available()];
+                            input.read(str);
+                            idmarque=Integer.parseInt(new String(str, "UTF8"));
+                        }
+                    }
+                }
+                //File uploaded successfully
+       Marque m = marqueServices.findMarqueById(idmarque);
+      Categorie c = categorieServices.findCategorieById(idcategorie);
+      if(produitServices.AddProduit(new Produit(nom, description, designation, prix, name, unite, m, c)))
+      {
+         // request.setAttribute("message", "File Uploaded Successfully le nom est :" + nom+ " le prenom est :" + prix);
+         // response.getWriter().append("Produit bien ajouté");
+           response.sendRedirect("../produits.jsp");
+      }
+      else 
+          response.getWriter().append("errrrrror ");
+            } catch (Exception ex) {
+                response.getWriter().append("noo");
+               // request.setAttribute("message", "File Upload Failed due to " + ex);
+            }
+        } else {
+              response.getWriter().append("message Sorry this Servlet only handles file upload request");
+            //request.setAttribute("message",
+                //    "Sorry this Servlet only handles file upload request");
         }
+    
     }
 
     private void getProduit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

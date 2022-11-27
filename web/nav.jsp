@@ -1,10 +1,38 @@
+
+<head>
+    <title>Site E-commerce</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <script src="js/jquery-3.6.1.min.js" type="text/javascript"></script>
+    <script src="js/panier.js" type="text/javascript"></script>
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
+
+    <!-- font css -->
+    <link rel="stylesheet" href="assets/fonts/feather.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="assets/fonts/material.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+
+</head>
+
+
+
+
+
 <nav class="pc-sidebar ">
     <div class="navbar-wrapper">
         <div class="m-header">
+            <p class="light">HAB SHOP</p>
             <a href="index.html" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <img src="assets/images/logo.sv" alt="" class="logo logo-lg">
-                <img src="assets/images/logo-sm.sv" alt="" class="logo logo-sm">
+               
             </a>
         </div>
         <div class="navbar-content ps ps--active-y">

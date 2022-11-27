@@ -14,10 +14,8 @@
         <%@include file="sidebar.html" %>
     <div class="container">
         <div class="text">Ajouter un produit </div>
-        <form action="admin/AddProduct" id="submit" method="post">
-      
-            
-
+        <form action="./admin/AddProduct" method="post"enctype="multipart/form-data">    
+       
       <div class="containerc">
          <div class="wrapper">
             <div class="image">
@@ -39,7 +37,7 @@
             </div>
          </div>
          <button onclick="defaultBtnActive()" id="custom-btn">Choisir un fichier</button>
-         <input id="default-btn" type="file" hidden>
+         <input name= "img" id="default-btn" type="file" hidden>
       </div>
       <script>
          const wrapper = document.querySelector(".wrapper");
