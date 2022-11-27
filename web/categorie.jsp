@@ -66,7 +66,7 @@
                     <figure>
                         <div class="col-sm-4">
                     <div class="card text-white bg-info ">
-                        <div class="card-header"><strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;</div>
+                        <div class="card-header"><strong>Categorie:&nbsp; <%= pp.getCategorie().getNom()%></strong>&nbsp;&nbsp;</div>
                         <a name="id" href="#?id=<%= pp.getId()%>" class="btn  btn-secondary">Afficher les produits</a>
                     </div>
                 </div>
