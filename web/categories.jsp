@@ -4,14 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>DashboardKit Bootstrap 5 Admin Template</title>
-    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 11]>
-    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    	<![endif]-->
-    <!-- Meta -->
+    <title>Liste des categories</title>
+
+
     <meta charset="utf-8">
     <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="js/jquery-3.6.1.min.js" type="text/javascript"></script>
