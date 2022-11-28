@@ -1,10 +1,8 @@
-<%@page import="services.ProduitServices"%>
 <%@page import="entities.Produit"%>
-<%@page import="java.util.List"%>
+<%@page import="services.ProduitServices"%>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+    <head>
     <title>Site E-commerce</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -24,21 +22,15 @@
 
     <!-- vendor css -->
     <link rel="stylesheet" href="assets/css/style.css" id="main-style-link">
+    <link href="style/style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 
-
-
-<body class="">
-
+<body>
     <%@include file="nav.jsp" %>
-
-
-
     <div class="pc-container">
         <div class="pcoded-content">
-            <!-- [ breadcrumb ] start -->
-            <div class="page-header">
+    <div class="page-header">
                 <div class="page-block">
                     <div class="row align-items-center">
                         <div class="col-md-6 col-xl-4">
@@ -52,59 +44,39 @@
                     </div>
                 </div>
             </div>
-            <!-- [ breadcrumb ] end -->
-            <!-- [ Main Content ] start -->
-            <div class="row">
-                <!-- [ sample-page ] start -->
-                <div class="card">
-					<div class="card-header">
-						<h5>Plus recent</h5>
-					</div>
-                <%!int i = 0;%>
-                <%
-                    HttpSession sessio = request.getSession();
-                    List<Produit> produits = (List<Produit>) sessio.getAttribute("listpr");
-                    if (produits != null) {
-                        i = produits.size();
-                    }
-                %>
-                <div style="text-align: right;">
-                    Panier :<a href="panier.jsp"> <i data-feather="shopping-cart"></i> <%= i%></a>
-                </div>
-                <div>
-                    <%
+            <h1><i class=" fa fa-shopping-cart"></i></h1>
+             <%
                         ProduitServices p = new ProduitServices();
                         for (Produit pp : p.findAllProduits()) {
                     %>
-                    <figure>
-                        <img style="width: 150px; height: 150px; " src=<%="ressource\\images\\" + pp.getImage()%>><br/>
-                        <strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;
-                        <br>
-                        <strong>Prix :&nbsp;<%= pp.getPrix()%>&nbspDH</strong><br>    
-                        <input style=" width:50px" type ="number" data-id="<%=pp.getId()%>" class="quantity-input" >
-                        <button class="add-to-cart" data-id="<%=pp.getId()%>">Ajouter au panier</button>
-                    </figure>
-                    <%}%>
-                </div>
- 
-				</div>
-                
-            </div>
-            
+	
+	<section>
+		<div class="item">
+			 <img style="width: 150px; height: 150px; " src=<%="ressource\\images\\" + pp.getImage()%>>
+                         <p>Nom:&nbsp; <%= pp.getNom()%>&nbsp;&nbsp;</p>
+			<p>Description:&nbsp; <%= pp.getDescription()%>&nbsp;&nbsp;</p>
+                        <p> Marque:&nbsp; <%= pp.getMarque().getNom()%>&nbsp;&nbsp;</p>
+                         <p> Categorie:&nbsp; <%= pp.getCategorie().getNom()%>&nbsp;&nbsp;</p>
+			<h6>Prix :&nbsp;<%= pp.getPrix()%>&nbspDH</h6>
+			<span></span>
+			<button class="add-to-cart" data-id="<%=pp.getId()%>">Ajouter au panier</button>
+			
+		</div>
+		
+		
+		
+	</section>
+	<div class="select">
+		
+	</div>
+        <%}%>
         </div>
-    </div>
-
-
-
-
-
-
-
-    <!-- Required Js -->
+        </div>
+      <!-- Required Js -->
     <script src="assets/js/vendor-all.min.js"></script>
     <script src="assets/js/plugins/bootstrap.min.js"></script>
     <script src="assets/js/plugins/feather.min.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
-
 </html>
