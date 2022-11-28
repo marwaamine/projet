@@ -6,8 +6,10 @@
 package services;
 
 
+import entities.Cart;
 import entities.Produit;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -128,5 +130,27 @@ public class ProduitServices {
         }
         return produits;
     }
+    //TEST
+     public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
+        List<Cart> book = new ArrayList<>();
+         Cart row = new Cart();
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            if (cartList.size() > 0) {
+                for (Cart item : cartList) {
+         book =  session.createQuery("FROM Produit P where P.id= :id").setParameter("cartList", cartList).list(); 
+         book.add(item);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return book;
     }
+}
+
 
