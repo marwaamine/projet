@@ -159,7 +159,7 @@ public class UserController extends HttpServlet {
      private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../index.jsp");
     }
     
     

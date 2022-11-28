@@ -3,25 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/marques.jsp</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/entities/Facture.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/entities/LigneCommandePK.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/entities/Commande.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/marqueform.jsp</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/productform.jsp</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/categorieform.jsp</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/js/marqueclient.js</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/controllers/MarqueDTO.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/controllers/CategorieDTO.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/sidebar.html</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/nav.jsp</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/entities/LigneCommande.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/controllers/ProduitDTO.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/WEB-INF/web.xml</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/categorie.jsp</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/src/java/controllers/AdminController.java</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/categories.jsp</file>
-            <file>file:/D:/ISIC/S3/JEE/e-commerce%20app/git/projet/web/produits.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/CategorieDTO.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/js/panier.js</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/AdminController.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/index.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/nav.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/UserController.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/ClientController.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/entities/Client.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/categorie.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/MarqueDTO.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/login.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/marque.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/entities/Commande.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/CommandeDTO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -35,8 +35,6 @@
 
 
 
-
-
     <div class="pc-container">
         <div class="pcoded-content">
             <!-- [ breadcrumb ] start -->
@@ -79,11 +77,11 @@
                         for (Produit pp : p.findAllProduits()) {
                     %>
                     <figure>
-                        <img style="width: 150px; height: 150px;" src=<%="ressource\\images\\" + pp.getImage()%>><br/>
+                        <img style="width: 150px; height: 150px; " src=<%="ressource\\images\\" + pp.getImage()%>><br/>
                         <strong>Nom:&nbsp; <%= pp.getNom()%></strong>&nbsp;&nbsp;
                         <br>
                         <strong>Prix :&nbsp;<%= pp.getPrix()%>&nbspDH</strong><br>    
-                        <input type ="number" data-id="<%=pp.getId()%>" class="quantity-input" >
+                        <input style=" width:50px" type ="number" data-id="<%=pp.getId()%>" class="quantity-input" >
                         <button class="add-to-cart" data-id="<%=pp.getId()%>">Ajouter au panier</button>
                     </figure>
                     <%}%>
