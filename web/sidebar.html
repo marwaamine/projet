@@ -8,7 +8,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
         <script src="script/script2.js" type="text/javascript"></script>
-        <link href="style/style2.css" rel="stylesheet" type="text/css"/>
+        <link href="style/sidebar.css" rel="stylesheet" type="text/css"/>
 	<title>AdminHub</title>
 </head>
 <body>
