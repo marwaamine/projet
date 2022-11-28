@@ -15,7 +15,7 @@
 
 
     <%@include file="sidebar.html" %>
-    <%@include file="navbar.html" %>
+
 
 
 	<!-- CONTENT -->
