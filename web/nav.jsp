@@ -56,7 +56,7 @@
         </div>
         <div class="navbar-content ps ps--active-y">
             <ul class="pc-navbar">
-                <li class="pc-item pc-caption">
+                <li class="pc-item pc-caption" style="text-decoration-color:#fff">
                     <label>Acceuil</label>
                 </li>
                 <li class="pc-item">
