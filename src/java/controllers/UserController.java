@@ -47,15 +47,24 @@ public class UserController extends HttpServlet {
              if(u.getPassword().equals(Util.md5(password))){
                  HttpSession session = request.getSession();
                  session.setAttribute("user",u);
+               
                 // userServices.update(u);
-                    response.sendRedirect("../index.jsp");      
+                 if(u.getEtat()==0){
+                     response.sendRedirect("../index.jsp"); 
+                 }
+                 if(u.getEtat()==1){
+                     response.sendRedirect("../dashboard.jsp"); 
+                 }
+                         
              }
+                
              else {
                 response.sendRedirect("login.jsp?msg=mot de passe incorrect");
             }
         } else {
             response.sendRedirect("inscription.jsp?msg=Email introuvable");
         }
+        
  }
        
        //RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
