@@ -30,14 +30,18 @@
                                 }%>
                             <span class="user-desc">Client</span>
                         </span>
-                    </a>
+                    </a>                        
+                           <% if (user == null) { %>
+                             <%} else {
+                            %>
                     <div class="dropdown-menu dropdown-menu-right pc-h-dropdown">
-
                         <a href="user/logout" class="dropdown-item">
                             <i class="material-icons-two-tone">chrome_reader_mode</i>
                             <span>Logout</span>
                         </a>
                     </div>
+                    <%
+                                }%>
                 </li>
             </ul>
         </div>

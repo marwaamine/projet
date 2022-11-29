@@ -50,14 +50,7 @@
             
             <div class="row">
                 <form action="AjouterPanier" method="GET">
-                <%!int i = 0;%>
-                <%
-                    HttpSession sessio = request.getSession();
-                    List<Produit> produits = (List<Produit>) sessio.getAttribute("listpr");
-                    if (produits != null) {
-                        i = produits.size();
-                    }
-                %>
+              
                 <div>
                     <%
                         ProduitServices p = new ProduitServices();
@@ -67,7 +60,7 @@
                         <div class="col-sm-4">
                     <div class="card text-white bg-info ">
                         <div class="card-header"><strong>Categorie:&nbsp; <%= pp.getCategorie().getNom()%></strong>&nbsp;&nbsp;</div>
-                        <a name="id" href="#?id=<%= pp.getId()%>" class="btn  btn-secondary">Afficher les produits</a>
+                        <a name="id" href="index.jsp?id=<%= pp.getId()%>" class="btn  btn-secondary">Afficher les produits</a>
                     </div>
                 </div>
      

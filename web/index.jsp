@@ -66,7 +66,7 @@
 		
 		
 	</section>
-	<div class="select">
+	<div class="select" id='content00'>
 		
 	</div>
         <%}%>
