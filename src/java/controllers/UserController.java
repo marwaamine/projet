@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import com.google.gson.Gson;
 import static com.mchange.net.SmtpUtils.sendMail;
 import entities.Client;
 import entities.User;
@@ -46,11 +47,14 @@ public class UserController extends HttpServlet {
          if(u != null){
              if(u.getPassword().equals(Util.md5(password))){
                  HttpSession session = request.getSession();
+                 int id_client=u.getId();
+          
                  session.setAttribute("user",u);
                
                 // userServices.update(u);
                  if(u.getEtat()==0){
-                     response.sendRedirect("../index.jsp"); 
+                       
+                      response.sendRedirect("../index.jsp"); 
                  }
                  if(u.getEtat()==1){
                      response.sendRedirect("../dashboard.jsp"); 
@@ -104,6 +108,10 @@ public class UserController extends HttpServlet {
                 break;
                 case "logout" : logout(request,response);
                 break;   
+                case "listUsers":listUsers(request, response);
+                break;
+                case "deleteClient":deleteClient(request, response);
+                break;    
                 default : login(request,response);
                 break;  
             }
@@ -143,7 +151,7 @@ public class UserController extends HttpServlet {
             if( sed.send(code,email))
             response.sendRedirect("../codeverification.jsp");
             else {
-                response.getWriter().append("hada ma huwa hada ");
+                response.getWriter().append("ma kynash cnx");
             }
         } 
 }
@@ -170,6 +178,18 @@ public class UserController extends HttpServlet {
         session.invalidate();
         response.sendRedirect("../index.jsp");
     }
-    
-    
+
+    private void listUsers(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        Gson gson = new Gson();
+         response.getWriter().write(gson.toJson(userServices.findAllClients()));
+    } 
+    private void deleteClient(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            userServices.deleteClient(userServices.findClientById(id));
+        } catch (NumberFormatException e) {
+        }
+        listUsers(request, response);
+    }
 }
