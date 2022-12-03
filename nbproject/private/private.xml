@@ -3,8 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/DELL/Desktop/panier/projet/src/java/controllers/UserController.java</file>
             <file>file:/C:/Users/DELL/Desktop/panier/projet/src/java/controllers/AddtoCart.java</file>
+=======
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/entities/Admin.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/controllers/AddtoCart.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/services/ProduitServices.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/entities/LigneCommande.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/services/CommandeServices.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/entities/Client.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/controllers/ProduitDTO.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/web/js/cart.js</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/controllers/ListCart.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/controllers/CheckCart.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/entities/User.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/entities/Produit.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/web/index.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/web/nav.jsp</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/web/js/panier.js</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/controllers/UserController.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/src/java/entities/Commande.java</file>
+            <file>file:/C:/Users/DELL/Documents/projetV9/projet/web/panier.jsp</file>
+>>>>>>> e5f65d508e9e879c4325020e098bddc07ed253ee
         </group>
     </open-files>
 </project-private>
