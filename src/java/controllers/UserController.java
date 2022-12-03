@@ -83,7 +83,7 @@ public class UserController extends HttpServlet {
         String telephone = request.getParameter("telephone");
         String adresse = request.getParameter("adresse");
         String password = Util.md5(request.getParameter("password"));
-        userServices.CreateClient(new Client(nom, prenom, telephone, adresse, email, password,0,null));
+        userServices.CreateUser(new Client(nom, prenom, telephone, adresse, email, password,0,null));
         //a modifier login sucess avec register success
          RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
          dispatcher.forward(request, response);
@@ -187,7 +187,7 @@ public class UserController extends HttpServlet {
     private void deleteClient(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            userServices.deleteClient(userServices.findClientById(id));
+            userServices.deleteUser(userServices.findClientById(id));
         } catch (NumberFormatException e) {
         }
         listUsers(request, response);

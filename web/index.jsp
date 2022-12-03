@@ -1,3 +1,6 @@
+<%@page import="entities.Categorie"%>
+<%@page import="services.CategorieServices"%>
+<%@page import="java.util.List"%>
 <%@page import="entities.Produit"%>
 <%@page import="services.ProduitServices"%>
 <!DOCTYPE html>
@@ -44,32 +47,92 @@
                     </div>
                 </div>
             </div>
-            <h1><i class=" fa fa-shopping-cart"></i></h1>
-             <%
-                        ProduitServices p = new ProduitServices();
-                        for (Produit pp : p.findAllProduits()) {
-                    %>
-	
-	<section>
-		<div class="item">
-			 <img style="width: 150px; height: 150px; " src=<%="ressource\\images\\" + pp.getImage()%>>
-                         <p>Nom:&nbsp; <%= pp.getNom()%>&nbsp;&nbsp;</p>
-			<p>Description:&nbsp; <%= pp.getDescription()%>&nbsp;&nbsp;</p>
-                        <p> Marque:&nbsp; <%= pp.getMarque().getNom()%>&nbsp;&nbsp;</p>
-                         <p> Categorie:&nbsp; <%= pp.getCategorie().getNom()%>&nbsp;&nbsp;</p>
-			<h6>Prix :&nbsp;<%= pp.getPrix()%>&nbspDH</h6>
-			<span></span>
-			<button class="add-to-cart" data-id="<%=pp.getId()%>">Ajouter au panier</button>
-			
-		</div>
-		
-		
-		
-	</section>
-	<div class="select" id='content00'>
-		
-	</div>
-        <%}%>
+             <div class="col-md-9" >
+                <div >
+                    <ol class="breadcrumb" style="margin-left:300px;display: flex;justify-content: center; " >
+                       
+                        <form method="get" action="catalogue.jsp" name="productForm" >
+                            
+  	<div class="sec-center"> 
+            
+            
+	  	<input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+	  	<label class="for-dropdown" for="dropdown">Categorie <i class="uil uil-arrow-down"></i></label>
+  		<div class="section-dropdown"> 
+                    
+                    <%
+                            
+                            CategorieServices cs = new CategorieServices();
+                            for(Categorie c : cs.listCategories()){
+                            
+                            %>
+                    
+                            
+  			
+  			<a href="?categorie=<%= c.getId()%>"> <%= c.getNom() %><i class="uil uil-arrow-right"></i></a>
+                         <%}%>
+                        
+                      
+  		</div>
+  	 
+                     
+                
+
+                        
+                        </div>   
+                        </form>
+                         
+                    </ol>
+                </div>
+                <!-- /.div -->
+            
+                      
+      
+                           
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+             
+                   
+                <div class="row">
+                       
+                    <%
+                           
+                           String id =  request.getParameter("categorie");
+                           if ( id != null){
+                           ProduitServices ps = new ProduitServices();
+                           for (Produit p : ps.findByCateg(cs.findCategorieById(Integer.parseInt(id)))){
+                           
+                           
+                           
+                        %>   
+                    <div class="col-md-4 text-center col-sm-6 col-xs-6">
+                        <div class="thumbnail product-box">
+                            <img style="width: 150px; height: 150px; " src=<%="ressource\\images\\" + p.getImage()%>>
+                              
+                            <div class="caption"  >
+                                <form action="./AddtoCart" method="get"> 
+                               <p ><input name="id" value="<%= p.getId() %>" type="hidden"></input>nom : <%= p.getNom() %> </p>
+                               <p>designation: <%= p.getDesignation() %> </p>
+                               <p>prix : <%= p.getPrix() %> </p>
+                               <input name="nb" value="1" type="hidden">
+                               <!-- HTML !-->
+                               <button class="button-85"  type="submit"  >  Ajouter au panier</button>
+                               </form>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <%}}%>  
+                     
+                    <div class="col-md-8">
+<table>
+
+</td>
+</tr>
         </div>
         </div>
       <!-- Required Js -->
@@ -77,6 +140,7 @@
     <script src="assets/js/plugins/bootstrap.min.js"></script>
     <script src="assets/js/plugins/feather.min.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/cart.js" type="text/javascript"></script>
+    
 </body>
 </html>

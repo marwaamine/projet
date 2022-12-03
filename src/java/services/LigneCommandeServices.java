@@ -5,12 +5,9 @@
  */
 package services;
 
-
-
-import entities.Categorie;
-import entities.Produit;
-import java.rmi.RemoteException;
-import java.util.ArrayList;
+import entities.Commande;
+import entities.LigneCommande;
+import entities.LigneCommandePK;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -21,118 +18,143 @@ import util.HibernateUtil;
  *
  * @author faouzia
  */
-public class ProduitServices {
-    public boolean AddProduit(Produit produit) {
-         org.hibernate.Session session = null;
+public class LigneCommandeServices {
+     public boolean create(LigneCommande o) {
+        Session session = null;
         Transaction tx = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.save(produit);
+            session.save(o);
             tx.commit();
             return true;
         } catch (HibernateException e) {
-            if(tx != null)
+            if (tx != null) {
                 tx.rollback();
+            }
         } finally {
             session.close();
         }
-        return false;
+        return false;    
     }
-    
-    
-    
-    
-    
-    
-      public boolean updateProduit(Produit produit)  {
-        org.hibernate.Session session = null;
-        Transaction tx = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.update(produit);
-            tx.commit();
-            return true;
-        } catch (HibernateException e) {
-            if(tx != null)
-                tx.rollback();
-        } finally {
-            session.close();
-        }
-        return false;
-    }
-    
-  public boolean deleteProduit(Produit produit)  {
-        Session session = null;
-        Transaction tx = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.delete(produit);
-            tx.commit();
-            return true;
-        } catch (HibernateException e) {
-            if(tx != null)
-                tx.rollback();
-        } finally {
-            session.close();
-        }
-        return false;
-    }
-   public List<Produit> findAllProduits() {
-        List<Produit> produits = null;
-        Session session = null;
-        Transaction tx = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            produits  =  session.createQuery("from Produit").list();
-            tx.commit();
-        } catch (HibernateException e) {
-            if(tx != null)
-                tx.rollback();
-        } finally {
-            session.close();
-        }
-        return produits;
-    }
-    public Produit findProduitById(int id)  {
-       Produit produit = null;
-        Session session = null;
-        Transaction tx = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            produit  = (Produit) session.get(Produit.class, id);
-            tx.commit();
-        } catch (HibernateException e) {
-            if(tx != null)
-                tx.rollback();
-        } finally {
-            session.close();
-        }
-        return produit;
-    }
-   public List<Produit> findByCateg(Categorie ct){
-        List<Produit> produits = null;
-        Session session = null;
-        Transaction tx = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            produits  =  session.createQuery("from Produit p where p.categorie = "+ct.getId()).list();
-            tx.commit();
-        } catch (HibernateException e) {
-            if(tx != null)
-                tx.rollback();
-        } finally {
-            session.close();
-        }
-        return produits;
-        
-    }
+
    
+    public boolean delete(LigneCommande o) {
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            session.delete(o);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return false;    
+    }
+
+    
+    public boolean update(LigneCommande o) {
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            session.update(o);
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return false;    
+    }
+
+    
+    public LigneCommande findById(int id) {
+        LigneCommande ligneCommande = null;
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            ligneCommande = (LigneCommande) session.get(LigneCommande.class, id);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return ligneCommande;  
+    }
+
+  
+    public List<LigneCommande> findAll() {
+        List<LigneCommande> ligneCommandes = null;
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            ligneCommandes = session.createQuery("from LigneCommande").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return ligneCommandes;
+        }
+    
+    public LigneCommande getByPK(LigneCommandePK lcpk) {
+        LigneCommande lc = null;
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            lc = (LigneCommande) session.getNamedQuery("findByLigneCommandePK").setParameter("lck", lcpk).uniqueResult();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return lc;
+                
+    }
+    
+    public List<LigneCommande> getByCommande(Commande c) {
+        List<LigneCommande> lc = null;
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            lc =  session.getNamedQuery("findLigneCommandeByCommande").setParameter("c", c.getId()).list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return lc;
+                
+    }
 }
-
-

@@ -12,12 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author faouzia
  */
 @Entity
+@NamedQuery(name = "findProduit", query = "select p.id , p.nom , p.designation, p.prix , p.image from Produit p")
 public class Produit implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,6 +5,7 @@
  */
 package test;
 
+import entities.Admin;
 import entities.Categorie;
 import entities.Client;
 import entities.Marque;
@@ -15,6 +16,7 @@ import services.MarqueServices;
 import services.ProduitServices;
 import services.UserServices;
 import util.HibernateUtil;
+import util.Util;
 
 /**
  *
@@ -27,6 +29,7 @@ public class Test {
         ProduitServices ps = new ProduitServices();
         MarqueServices ms = new MarqueServices();
          CategorieServices cs = new CategorieServices();
+         us.CreateUser(new Admin("admin@gmail.com", Util.md5("admin123")));
      //   ps.AddProduit(new Produit("dell", "dell core i5", "pc dell", 25000, "xx", 2));
         // ms.AddMarque(new Marque(1, "HP"));
      // ms.AddMarque(new Marque("HP"));
@@ -44,7 +47,7 @@ public class Test {
          //   System.out.println("done");
     //    }
        // System.out.println("done");   
-      System.out.println(ps.findAllProduits());
+  //    System.out.println(ps.findAllProduits());
     
     }
 }

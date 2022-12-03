@@ -8,7 +8,7 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
-    <property name="hibernate.hbm2ddl.auto">update</property> 
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="entities.Commande"/>
     <mapping class="entities.LigneCommande"/>
     <mapping class="entities.Produit"/>
@@ -18,6 +18,5 @@
     <mapping class="entities.Facture"/>
     <mapping class="entities.Marque"/>
     <mapping class="entities.User"/>
-    
   </session-factory>
 </hibernate-configuration>

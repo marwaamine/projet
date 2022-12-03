@@ -20,6 +20,12 @@ public class LigneCommandePK implements Serializable{
     public LigneCommandePK() {
     }
 
+    public LigneCommandePK(int produitId, int commandeId) {
+        this.produitId = produitId;
+        this.commandeId = commandeId;
+    }
+
+    
     public int getProduitId() {
         return produitId;
     }

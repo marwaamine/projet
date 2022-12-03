@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQuery;
 import org.hibernate.validator.constraints.Email;
 
 /**
@@ -19,7 +20,8 @@ import org.hibernate.validator.constraints.Email;
  * @author faouzia
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedQuery(name = "findByEmail", query = "select c from User c where c.email = :email ")
 public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

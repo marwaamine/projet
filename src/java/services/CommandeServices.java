@@ -5,6 +5,7 @@
  */
 package services;
 
+import entities.Client;
 import entities.Commande;
 import entities.Marque;
 import java.util.List;
@@ -80,7 +81,7 @@ public class CommandeServices {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            commandes =  session.createQuery("from Commande").list();
+            commandes = session.getNamedQuery("findCommandes").list();
             tx.commit();
         } catch (HibernateException e) {
             if(tx != null)
@@ -89,5 +90,41 @@ public class CommandeServices {
             session.close();
         }
         return commandes;
+    }
+    public List<Commande> getByStatus(String status) {
+        List<Commande> commande = null;
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            commande =  session.getNamedQuery("findByStatus").setParameter("status", status).list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return commande;
+    }
+     public Commande findPanier() {
+        Commande commande = null;
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            commande = (Commande) session.getNamedQuery("findPanier").uniqueResult();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return commande;
     }
 }

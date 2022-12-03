@@ -72,7 +72,11 @@
                     <label>Activites</label>
                     <span>Achats, Factures...</span>
                 </li>
-                
+                <li class="pc-item">
+                    <a href="panier.jsp" class="pc-link "><span class="pc-micon"><i
+                                class="material-icons-two-tone">history_edu</i></span><span
+                            class="pc-mtext">Paniers</span></a>
+                </li>
                 <li class="pc-item">
                     <a href="facture.jsp" class="pc-link "><span class="pc-micon"><i
                                 class="material-icons-two-tone">history_edu</i></span><span

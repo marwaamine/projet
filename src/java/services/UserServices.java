@@ -22,13 +22,13 @@ import util.HibernateUtil;
  */
 public class UserServices {
    
-      public boolean CreateClient(Client client) {
+      public boolean CreateUser(User user) {
          org.hibernate.Session session = null;
         Transaction tx = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.save(client);
+            session.save(user);
             tx.commit();
             return true;
         } catch (HibernateException e) {
@@ -39,13 +39,13 @@ public class UserServices {
         }
         return false;
     }
-          public boolean deleteClient(Client client){
+          public boolean deleteUser(User user){
         Session session = null;
         Transaction tx = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            session.delete(client);
+            session.delete(user);
             tx.commit();
             return true;
         } catch (HibernateException e) {
@@ -55,29 +55,6 @@ public class UserServices {
             session.close();
         }
         return false;
-    }
-
-    public int LoginUser(String email, String password) {
-        Transaction transaction = null;
-        User user = null;
-        try {
-            org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();  
-            // start a transaction
-            transaction = session.beginTransaction();
-            // get an user object
-            user = (User) session.createQuery("FROM User U WHERE U.email = :email").setParameter("email", email).uniqueResult();
-            if (user != null && user.getPassword().equals(password)) {
-                return user.getId();
-            }
-            // commit transaction
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-        return 0;
     }
     public User getByEmail(String email) {
         org.hibernate.Session session = null;
@@ -97,10 +74,7 @@ public class UserServices {
         }
           return null;
     }
-    
-       
-       
-    
+  
     public boolean update(User user) {
          org.hibernate.Session session = null;
         Transaction tx = null;

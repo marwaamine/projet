@@ -6,62 +6,60 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
  *
- * @author 
+ * @author Lachgar
  */
+@NamedQueries({
+    @NamedQuery(name = "findPanier", query = "select c from Commande c where c.status = 'en cours'"),
+    })
 @Entity
 public class Commande implements Serializable{
+
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private Date date;
+    
+    
     @ManyToOne
     private Client client;
-    @ManyToOne
+    
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Facture facture;
-    @OneToMany
-    private List<LigneCommande> ligneCommandes ;
+    
+    @OneToMany(mappedBy = "commande",fetch = FetchType.EAGER)
+    private List<LigneCommande> lignecommande;
+    
+    private String status;
+    
     public Commande() {
     }
 
-    public Commande(Date date, Client client, Facture facture) {
+    public Commande(Date date, Client client) {
         this.date = date;
         this.client = client;
-        this.facture = facture;
-        this.ligneCommandes= new ArrayList<>();
+        this.status = "en cours";
     }
     
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    
 
     public Client getClient() {
         return client;
@@ -79,14 +77,38 @@ public class Commande implements Serializable{
         this.facture = facture;
     }
 
-    public List<LigneCommande> getLigneCommandes() {
-        return ligneCommandes;
+    public String getStatus() {
+        return status;
     }
 
-    public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
-        this.ligneCommandes = ligneCommandes;
+    public void setStatus(String status) {
+        this.status = status;
     }
     
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    public List<LigneCommande> getLignecommande() {
+        return lignecommande;
+    }
+
+    public void setLignecommande(List<LigneCommande> lignecommande) {
+        this.lignecommande = lignecommande;
+    }
     
     
 }
