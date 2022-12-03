@@ -12,9 +12,12 @@ import entities.Commande;
 import entities.LigneCommande;
 import entities.LigneCommandePK;
 import entities.Produit;
+import entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,6 +38,11 @@ import services.UserServices;
  */
 @WebServlet(name = "AddtoCart", urlPatterns = {"/AddtoCart"})
 public class AddtoCart extends HttpServlet {
+     private UserServices userServices;
+    
+    public void init (){
+    userServices = new UserServices ();
+}
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,20 +54,29 @@ public class AddtoCart extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
+        String email = request.getParameter("email");
+        User u  = userServices.getByEmail(email);
+         
         HttpSession session = request.getSession();
-        String eid = (String)session.getAttribute("email");
-       // if (eid == null) {
-            // response.setContentType("application/json");
-             //Gson gson = new Gson();
-             //response.getWriter().write(gson.toJson(-1));
-        //}
-       // else {
+        User userid  = (User) session.getAttribute("user") ;
+        int id_client=userid.getId();
+        String email_client = userid.getEmail();
+        //response.getWriter().append(""+email_client);
+       // response.getWriter().append("id client est : "+userid.getId());
+       // response.getWriter().append("idclient"+ id_client);
+         
+         if (id_client== 0) {
+            response.setContentType("application/json");
+             Gson gson = new Gson();
+             response.getWriter().write("Veuillez se connecter d'abord");
+        }
+       else {
             CommandeServices cs = new CommandeServices();
             UserServices us = new UserServices();
             LigneCommandeServices ls = new LigneCommandeServices();
             ProduitServices ps = new ProduitServices();
-            Client tmp = (Client) us.getByEmail(eid);
+            Client tmp = (Client) us.getByEmail(email_client);
             Commande panier = cs.findPanier();
             if(panier==null){
                 
@@ -90,11 +107,7 @@ public class AddtoCart extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/panier.jsp");
             rd.forward(request,response);
 
-        //}
-        
-        
-        
-        
+       }
         
     }
 
@@ -110,7 +123,11 @@ public class AddtoCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+             processRequest(request, response);
+         } catch (Exception ex) {
+             Logger.getLogger(AddtoCart.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
     /**
@@ -124,7 +141,11 @@ public class AddtoCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         try {
+             processRequest(request, response);
+         } catch (Exception ex) {
+             Logger.getLogger(AddtoCart.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
 
     /**

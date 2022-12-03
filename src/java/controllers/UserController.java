@@ -46,13 +46,18 @@ public class UserController extends HttpServlet {
         //int id = userServices.LoginUser(email,password);
          if(u != null){
              if(u.getPassword().equals(Util.md5(password))){
-                 HttpSession session = request.getSession();
                  int id_client=u.getId();
-          
-                 session.setAttribute("user",u);
+                 HttpSession session = request.getSession();
+                 //String mail= u.getEmail();
+                 
+        //  response.getWriter().append("id client est : "+id_client);
+             //session.setAttribute("idclient", id_client);
+         
+      session.setAttribute("user",u);
+                 
                
                 // userServices.update(u);
-                 if(u.getEtat()==0){
+         if(u.getEtat()==0){
                        
                       response.sendRedirect("../index.jsp"); 
                  }

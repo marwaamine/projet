@@ -1,3 +1,4 @@
+<%@page import="services.CommandeServices"%>
 <%@page import="entities.Commande"%>
 <%@page import="services.ProduitServices"%>
 <%@page import="services.LigneCommandeServices"%>
@@ -43,7 +44,7 @@
                                 <h5 class="m-b-10">Activites</h5>
                             </div>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Panier</a></li>
+                                <li class="breadcrumb-item"><a href="index.html">Suivi Commande</a></li>
                             </ul>
                         </div>
                     </div>
@@ -51,9 +52,7 @@
             </div>           
             <div class="row">
                 <div class="card">
-                    <div class="card-header">
-                        <h5>Panier</h5>
-                    </div>
+                  
                     <div class="card-body table-border-style">
                         <div class="table-responsive">
                             <table id="tPanier" class="table table-hover" style="width: 100%;">
@@ -61,47 +60,32 @@
                             <tr class="text-uppercase bg-light">
                                
                                 <th scope="col">Produit</th>
-                                <th scope="col">Quantite</th>
-                                <th scope="col">Prix</th>
-                                <th scope="col">Supprimer</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            
-                            
+                           <tbody>   
                             <%
-                           double somme =0;
-                           LigneCommandeServices ls = new LigneCommandeServices();
+                           double somme =0;           
+                           CommandeServices cs= new CommandeServices();
+                           LigneCommande l = new LigneCommande();
                            ProduitServices ps = new ProduitServices();
-                           Commande c = new Commande();
-                           for (LigneCommande l : ls.findAll()){
-                           somme = somme+(l.getQuantité()*l.getPrixVente());
-                          
+                           for (Commande c :cs.findCommandes()){
                         %> 
                             <tr>
-                                <td><%= l.getProduit().getNom() %></td>
-                                <td><%= l.getQuantité() %></td>
-                                <td><%= l.getPrixVente() %></td>
                                 
-          <td><button type="button" class="button-85 supprimer"> <a href="./DeleteCommande?id=<%= c.getId() %> ">Supprimer</button></td>
+                                <td><%= l.getProduit().getNom() %></td>
+                                <td><%= c.getDate() %></td>                             
+                                <td><%= c.getStatus() %> </td>
                                 
                             </tr>
-                         <%}%>  
-   
+                      
+    <%}%> 
                         </tbody>
-                        
-                        <tfoot>
-            <tr> 
-                <th></th>
-                <th>Prix Total</th>
-                <th><%= somme %></th>
-                <th></th>
-            </tr>
-        </tfoot>
+                     
+                       
                     </table>
-                    <form >
-                        <button type="submit" class="button-85" style="margin-left: 850px"> <a href="suiviCommande.jsp">Commander</button>
-                    </form>
+                   
                 </div>
             </div>
         </div>

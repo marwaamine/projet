@@ -3,32 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/productform.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/style/style.css</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/index.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/sidebar.html</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/MarqueDTO.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/js/marquee.js</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/marques.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/assets/css/style.css</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/js/main.js</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/CommandeDTO.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/style/forms.css</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/CategorieDTO.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/ProduitDTO.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/js/produittliste.js</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/AdminController.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/js/marqueliste.js</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/style/sidebar.css</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/produits.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/nav.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/UserController.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/controllers/ClientController.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/src/java/entities/Client.java</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/commandes.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/login.jsp</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/js/script.js</file>
-            <file>file:/C:/Users/DELL/Documents/projetV9/site_web_/projet-3/web/style/registration.css</file>
+            <file>file:/C:/Users/DELL/Desktop/panier/projet/src/java/controllers/UserController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/panier/projet/src/java/controllers/AddtoCart.java</file>
         </group>
     </open-files>
 </project-private>

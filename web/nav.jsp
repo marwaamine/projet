@@ -78,6 +78,11 @@
                             class="pc-mtext">Paniers</span></a>
                 </li>
                 <li class="pc-item">
+                    <a href="suiviCommande.jsp" class="pc-link "><span class="pc-micon"><i
+                                class="material-icons-two-tone">history_edu</i></span><span
+                            class="pc-mtext">Suivi Commande</span></a>
+                </li>
+                <li class="pc-item">
                     <a href="facture.jsp" class="pc-link "><span class="pc-micon"><i
                                 class="material-icons-two-tone">history_edu</i></span><span
                             class="pc-mtext">Factures</span></a>
