@@ -32,7 +32,7 @@ public class Facture extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
           int montant = Integer.parseInt(request.getParameter("montant)"));
-          response.getWriter().append("montant"+montant);
+          
     }
 
     @Override

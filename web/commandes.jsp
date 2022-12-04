@@ -1,3 +1,7 @@
+<%@page import="entities.LigneCommande"%>
+<%@page import="entities.Commande"%>
+<%@page import="services.CommandeServices"%>
+<%@page import="services.LigneCommandeServices"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,29 +50,46 @@
                     <div class="pro-scroll ps ps--active-y" style="height:255px;position:relative;">
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table table-hover m-b-0">
+                                <table  class="table table-hover m-b-0">
                                     <thead>
-                                        <tr>
-                                            <th>Client</th>
-                                            <th>Date</th>
-                                            <th>Etat</th>
-                                            <th>Prix</th>
-                                            <th>Action</th>
+                                        <tr class="text-uppercase bg-light">
+                                            <th scope="col">Client</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Etat</th>
+                                            <th scope="col">Quantité</th>
+                                            <th scope="col">Prix</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                               
-                                            </td>
-                                            <td></td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16  text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
-                                       
-                                    </tbody>
-                                </table>
+                           <tbody>   
+                            <%
+                            double somme= 0;    
+                           CommandeServices cs= new CommandeServices();
+                           LigneCommandeServices ls= new LigneCommandeServices();
+                           
+                               for (LigneCommande l: ls.findAll()){
+                                   somme = somme+(l.getQuantité()*l.getPrixVente());
+                                   for (Commande c :cs.findCommandes()){
+                        %> 
+                            <tr>
+                                <td><%= c.getClient().getNom() %> </td>
+                                <td><%= c.getDate() %></td>                             
+                                <td><%= c.getStatus() %> </td>
+                                <td><%= l.getQuantité() %> </td>
+                                <td><%= l.getPrixVente() %></td>                                
+                                
+                            </tr>
+                          
+    <%}}%> 
+                        </tbody>    
+                         <tfoot>
+                                <tr> 
+                                    <th></th>
+                                    <th>Montant</th>
+                                    <th><%= somme %></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                  </table>
                             </div>
                         </div>
                 </div>
@@ -83,5 +104,19 @@
         <script src="assets/js/plugins/bootstrap.min.js"></script>
         <script src="assets/js/plugins/feather.min.js"></script>
         <script src="assets/js/pcoded.min.js"></script>
-        
+        <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+     <script src='js/jquery-3.2.1.min.js'></script>  
+  
+   
+    <script src="js/panier.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+
+            $('#mi-slider').catslider();
+
+        });
+		</script>
+                 
     </body>

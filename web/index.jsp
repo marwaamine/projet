@@ -66,9 +66,7 @@
                             for(Categorie c : cs.listCategories()){
                             
                             %>
-                    
-                            
-  			
+	
   			<a href="?categorie=<%= c.getId()%>"> <%= c.getNom() %><i class="uil uil-arrow-right"></i></a>
                          <%}%>
                         

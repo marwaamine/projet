@@ -64,13 +64,12 @@
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
-                           <tbody>   
+                          <tbody>   
                             <%
-                           double somme =0;           
                            CommandeServices cs= new CommandeServices();
-                           LigneCommande l = new LigneCommande();
-                           ProduitServices ps = new ProduitServices();
+                           LigneCommandeServices ls= new LigneCommandeServices();
                            for (Commande c :cs.findCommandes()){
+                               for (LigneCommande l: ls.findAll()){
                         %> 
                             <tr>
                                 
@@ -80,7 +79,7 @@
                                 
                             </tr>
                       
-    <%}%> 
+    <%}}%> 
                         </tbody>
                      
                        
