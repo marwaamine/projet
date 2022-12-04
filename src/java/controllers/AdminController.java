@@ -27,7 +27,7 @@ import services.ProduitServices;
 
 /**
  *
- * @author DELL
+ * @author faouzia
  */
 @WebServlet("/admin/*")
 public class AdminController extends HttpServlet {
@@ -52,7 +52,6 @@ public class AdminController extends HttpServlet {
         produitServices = new ProduitServices();
         categorieServices = new CategorieServices();
     }
-
     protected void FormProduit(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Marque> marques = marqueServices.findMarques();
@@ -62,7 +61,6 @@ public class AdminController extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("admin/AddProduct");
         dispatcher.forward(request, response);
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
