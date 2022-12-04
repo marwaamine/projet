@@ -127,4 +127,21 @@ public class CommandeServices {
         }
         return commande;
     }
+       public Commande findCommandeById(int id)  {
+       Commande commande = null;
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            commande  = (Commande) session.get(Commande.class, id);
+            tx.commit();
+        } catch (HibernateException e) {
+            if(tx != null)
+                tx.rollback();
+        } finally {
+            session.close();
+        }
+        return commande;
+    }
 }

@@ -1,3 +1,4 @@
+<%@page import="entities.LigneCommandePK"%>
 <%@page import="entities.Commande"%>
 <%@page import="services.ProduitServices"%>
 <%@page import="services.LigneCommandeServices"%>
@@ -73,6 +74,8 @@
                            double somme =0;
                            LigneCommandeServices ls = new LigneCommandeServices();
                            ProduitServices ps = new ProduitServices();
+                           LigneCommandePK lcpk = new LigneCommandePK();
+                           LigneCommande lc = new LigneCommande();
                            Commande c = new Commande();
                            for (LigneCommande l : ls.findAll()){
                            somme = somme+(l.getQuantité()*l.getPrixVente());
@@ -83,7 +86,7 @@
                                 <td><%= l.getQuantité() %></td>
                                 <td><%= l.getPrixVente() %></td>
                                 
-          <td><button type="button" class="button-85 supprimer"> <a href="./DeleteCommande?id=<%= c.getId() %> ">Supprimer</button></td>
+                                <td><button type="button" class="button-85 supprimer"> <a href="./DeleteCommande?id=<%= l.getProduit().getId()%>">Supprimer</button></td>
                                 
                             </tr>
                          <%}%>  

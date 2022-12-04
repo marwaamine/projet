@@ -8,10 +8,16 @@ package test;
 import entities.Admin;
 import entities.Categorie;
 import entities.Client;
+import entities.Commande;
+import entities.LigneCommande;
+import entities.LigneCommandePK;
 import entities.Marque;
 import entities.Produit;
+import java.util.Date;
 import org.hibernate.Hibernate;
 import services.CategorieServices;
+import services.CommandeServices;
+import services.LigneCommandeServices;
 import services.MarqueServices;
 import services.ProduitServices;
 import services.UserServices;
@@ -24,12 +30,13 @@ import util.Util;
  */
 public class Test {
     public static void main(String[] args) {
-        HibernateUtil.getSessionFactory().openSession();
+     //   HibernateUtil.getSessionFactory().openSession();
         UserServices us = new UserServices();
         ProduitServices ps = new ProduitServices();
         MarqueServices ms = new MarqueServices();
          CategorieServices cs = new CategorieServices();
-         us.CreateUser(new Admin("admin@gmail.com", Util.md5("admin123")));
+        // us.CreateUser(new Admin("admin@gmail.com", Util.md5("admin123")));
+      
      //   ps.AddProduit(new Produit("dell", "dell core i5", "pc dell", 25000, "xx", 2));
         // ms.AddMarque(new Marque(1, "HP"));
      // ms.AddMarque(new Marque("HP"));

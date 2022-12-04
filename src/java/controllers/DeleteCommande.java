@@ -5,6 +5,9 @@
  */
 package controllers;
 
+import entities.Commande;
+import entities.LigneCommande;
+import entities.LigneCommandePK;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import services.CommandeServices;
 import services.LigneCommandeServices;
 
 /**
@@ -20,21 +24,23 @@ import services.LigneCommandeServices;
  */
 @WebServlet(name = "DeleteCommande", urlPatterns = {"/DeleteCommande"})
 public class DeleteCommande extends HttpServlet {
-    LigneCommandeServices cs = new LigneCommandeServices();
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    CommandeServices cs = new  CommandeServices();
+    LigneCommandePK lcpk = new LigneCommandePK();
+    LigneCommandeServices lcs = new LigneCommandeServices();
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
   throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-       response.getWriter().append(""+cs.findById(id));
         
+        int id = Integer.parseInt(request.getParameter("id"));
+      int idcommande=  lcpk.getCommandeId();
+        
+       // Commande commande = cs.findCommandeById(id);
+       // cs.deleteCommande(commande);
+         LigneCommande lignecm = lcs.findById(id);
+         response.getWriter().append(""+lignecm);
+       // lcs.delete(lignecm);
+       // response.getWriter().append("supprimer");
+     //   response.sendRedirect("../panier.jsp");
     //  cs.delete(cs.findById(id));
       //response.sendRedirect("panier.jsp");
     }

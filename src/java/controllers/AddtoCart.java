@@ -102,8 +102,7 @@ public class AddtoCart extends HttpServlet {
                 
                 ls.update(lctmp);
             }
-            
-                
+               
             RequestDispatcher rd = request.getRequestDispatcher("/panier.jsp");
             rd.forward(request,response);
 
