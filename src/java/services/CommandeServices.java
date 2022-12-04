@@ -81,7 +81,7 @@ public class CommandeServices {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            commandes = session.getNamedQuery("findCommandes").list();
+           commandes = session.createQuery("from Commande").list();
             tx.commit();
         } catch (HibernateException e) {
             if(tx != null)

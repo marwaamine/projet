@@ -56,8 +56,7 @@ public class AddtoCart extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         String email = request.getParameter("email");
-        User u  = userServices.getByEmail(email);
-         
+        User u  = userServices.getByEmail(email);    
         HttpSession session = request.getSession();
         User userid  = (User) session.getAttribute("user") ;
         int id_client=userid.getId();
@@ -66,10 +65,10 @@ public class AddtoCart extends HttpServlet {
        // response.getWriter().append("id client est : "+userid.getId());
        // response.getWriter().append("idclient"+ id_client);
          
-         if (id_client== 0) {
+         if (email_client==null) {
+                response.getWriter().write("Veuillez se connecter d'abord");
             response.setContentType("application/json");
              Gson gson = new Gson();
-             response.getWriter().write("Veuillez se connecter d'abord");
         }
        else {
             CommandeServices cs = new CommandeServices();
