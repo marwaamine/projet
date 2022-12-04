@@ -86,7 +86,7 @@
                                 <td><%= l.getQuantité() %></td>
                                 <td><%= l.getPrixVente() %></td>
                                 
-                                <td><button type="button" class="button-85 supprimer"> <a href="./DeleteCommande?id=<%= l.getProduit().getId()%>">Supprimer</button></td>
+                                <td><button type="button" class="button-85 supprimer"> <a href="./DeleteCommande?idproduit=<%= l.getProduit().getId()%>&idcommande=<%= l.getCommande().getId()%>">Supprimer</button></td>
                                 
                             </tr>
                          <%}%>  
@@ -104,6 +104,9 @@
                     </table>
                     <form >
                         <button type="submit" class="button-85" style="margin-left: 850px"> <a href="suiviCommande.jsp">Commander</button>
+                    </form>
+                  <form >
+                      <button type="submit" class="button-85" style="margin-left: 850px"> <a href="./Facture?montant=<%= somme%>">Facture</button>
                     </form>
                 </div>
             </div>

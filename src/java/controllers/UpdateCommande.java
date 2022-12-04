@@ -5,27 +5,24 @@
  */
 package controllers;
 
-import com.google.gson.Gson;
-import entities.Client;
-import entities.Commande;
+import entities.LigneCommande;
+import entities.LigneCommandePK;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import services.CommandeServices;
-import services.UserServices;
-
+import services.LigneCommandeServices;
 
 /**
  *
- * @author faouzia
+ * @author DELL
  */
-@WebServlet(name = "CheckCart", urlPatterns = {"/CheckCart"})
-public class CheckCart extends HttpServlet {
+@WebServlet(name = "UpdateCommande", urlPatterns = {"/UpdateCommande"})
+public class UpdateCommande extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,45 +33,32 @@ public class CheckCart extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("application/json");
-        Gson gson = new Gson();
-             CommandeServices cs = new CommandeServices();
-        HttpSession session = request.getSession();
-        String eid = (String)session.getAttribute("email");
-        if (eid == null) {
-            response.getWriter().write(gson.toJson(0));
-        }
-        else {
-        
-            UserServices us = new UserServices();
-            Client tmp = (Client) us.getByEmail(eid);
-            Commande panier = cs.findPanier();
-            if(panier==null){
-             response.getWriter().write(gson.toJson(0));   
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int idproduit = Integer.parseInt(request.getParameter("idproduit"));
+        int commandeid = Integer.parseInt(request.getParameter("idcommande"));
+        int arg = Integer.parseInt(request.getParameter("arg"));
+        LigneCommandeServices lcs = new LigneCommandeServices();
+        LigneCommandePK lcPK = new LigneCommandePK(idproduit, commandeid);
+        LigneCommande tmp = lcs.getByPK(lcPK);
+        if (arg == 1) {
+            //munis
+            tmp.setQuantité(((tmp.getQuantité()) - 1));
+            if (tmp.getQuantité() == 0) {
+                lcs.delete(tmp);
+            } else {
+                lcs.update(tmp);
             }
-            else{
-                int send = panier.getLignecommande().size();
-            
-                response.getWriter().write(gson.toJson(send)); 
-            }
-            
-
         }
-        
+        if (arg == 0) {
+            //add
+            tmp.setQuantité(((tmp.getQuantité()) + 1));
+            lcs.update(tmp);
         }
-    
+        RequestDispatcher rd = request.getRequestDispatcher("/panier.jsp");
+        rd.forward(request, response);
+    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

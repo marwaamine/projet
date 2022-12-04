@@ -34,7 +34,7 @@ import services.UserServices;
 
 /**
  *
- * @author User
+ * @author faouzia
  */
 @WebServlet(name = "AddtoCart", urlPatterns = {"/AddtoCart"})
 public class AddtoCart extends HttpServlet {
@@ -57,7 +57,6 @@ public class AddtoCart extends HttpServlet {
             throws ServletException, IOException, Exception {
         String email = request.getParameter("email");
         User u  = userServices.getByEmail(email);
-         
         HttpSession session = request.getSession();
         User userid  = (User) session.getAttribute("user") ;
         int id_client=userid.getId();
@@ -65,7 +64,6 @@ public class AddtoCart extends HttpServlet {
         //response.getWriter().append(""+email_client);
        // response.getWriter().append("id client est : "+userid.getId());
        // response.getWriter().append("idclient"+ id_client);
-         
          if (id_client== 0) {
             response.setContentType("application/json");
              Gson gson = new Gson();
@@ -79,10 +77,8 @@ public class AddtoCart extends HttpServlet {
             Client tmp = (Client) us.getByEmail(email_client);
             Commande panier = cs.findPanier();
             if(panier==null){
-                
                 panier = new Commande(new Date(),tmp);
-                cs.AddCommande(panier);
-                
+                cs.AddCommande(panier);  
             }
             int commandeid = panier.getId();
             int idProduit = Integer.parseInt(request.getParameter("id"));

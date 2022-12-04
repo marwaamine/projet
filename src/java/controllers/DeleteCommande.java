@@ -10,6 +10,7 @@ import entities.LigneCommande;
 import entities.LigneCommandePK;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,24 +21,33 @@ import services.LigneCommandeServices;
 
 /**
  *
- * @author DELL
+ * @author faouzia
  */
 @WebServlet(name = "DeleteCommande", urlPatterns = {"/DeleteCommande"})
 public class DeleteCommande extends HttpServlet {
     CommandeServices cs = new  CommandeServices();
-    LigneCommandePK lcpk = new LigneCommandePK();
+   // LigneCommandePK lcpk = new LigneCommandePK();
     LigneCommandeServices lcs = new LigneCommandeServices();
-    
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
   throws ServletException, IOException {
+        int idproduit = Integer.parseInt(request.getParameter("idproduit"));
+        int idcommande = Integer.parseInt(request.getParameter("idcommande"));
+        LigneCommandePK lcpk = new LigneCommandePK(idproduit,idcommande);
+        //response.getWriter().append("supprimer"+lcpk);
+       LigneCommande tmp = lcs.getByPK(lcpk);
+      //  response.getWriter().append("supprimer"+tmp);
+        lcs.delete(tmp);
+         Commande commande = cs.findCommandeById(idcommande);
+      cs.deleteCommande(commande);
+     // response.getWriter().append("supprimer");
+        RequestDispatcher rd = request.getRequestDispatcher("/panier.jsp");
+      rd.forward(request, response);
+        //int id = Integer.parseInt(request.getParameter("id"));
+     // int idcommande=  lcpk.getCommandeId();
         
-        int id = Integer.parseInt(request.getParameter("id"));
-      int idcommande=  lcpk.getCommandeId();
-        
-       // Commande commande = cs.findCommandeById(id);
-       // cs.deleteCommande(commande);
-         LigneCommande lignecm = lcs.findById(id);
-         response.getWriter().append(""+lignecm);
+       //  LigneCommande lignecm = lcs.findById(id);
+        // response.getWriter().append(""+lignecm);
        // lcs.delete(lignecm);
        // response.getWriter().append("supprimer");
      //   response.sendRedirect("../panier.jsp");
