@@ -106,7 +106,7 @@
                         <button type="submit" class="button-85" style="margin-left: 850px"> <a href="suiviCommande.jsp">Commander</button>
                     </form>
                   <form >
-                      <button type="submit" class="button-85" style="margin-left: 850px"> <a href="./Facture?montant=<%= somme%>">Facture</button>
+                      <button type="submit" class="button-85" style="margin-left: 850px"> <a href="./Facture?somme=<%=somme%>">Facture</button>
                     </form>
                 </div>
             </div>

@@ -33,78 +33,31 @@
     <%@include file="nav.jsp" %>
     <div class="pc-container">
         <div class="pcoded-content">
-    <div class="page-header">
-                <div class="page-block">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 col-xl-4">
-                            <div class="page-header-title">
-                                <h5 class="m-b-10">Acceuil</h5>
-                            </div>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Pour moi</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
              <div class="col-md-9" >
                 <div >
-                    <ol class="breadcrumb" style="margin-left:300px;display: flex;justify-content: center; " >
-                       
-                        <form method="get" action="catalogue.jsp" name="productForm" >
-                            
-  	<div class="sec-center"> 
-            
-            
-	  	<input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-	  	<label class="for-dropdown" for="dropdown">Categorie <i class="uil uil-arrow-down"></i></label>
-  		<div class="section-dropdown"> 
-                    
-                    <%
-                            
+                    <ol class="breadcrumb" style="margin-left:300px;display: flex;justify-content: center; " >  
+	  	<label class="for-dropdown" for="dropdown">Categorie :<i class="uil uil-arrow-down"></i></label>
+  		<div class="section-dropdown">                     
+                    <% 
                             CategorieServices cs = new CategorieServices();
                             for(Categorie c : cs.listCategories()){
                             
                             %>
-	
   			<a href="?categorie=<%= c.getId()%>"> <%= c.getNom() %><i class="uil uil-arrow-right"></i></a>
                          <%}%>
-                        
-                      
-  		</div>
-  	 
-                     
-                
 
-                        
-                        </div>   
-                        </form>
-                         
+  		</div>  
+
                     </ol>
-                </div>
-                <!-- /.div -->
-            
-                      
-      
-                           
-                           
+                </div>  
                         </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-             
-                   
+                        
                 <div class="row">
-                       
-                    <%
-                           
-                           String id =  request.getParameter("categorie");
+                    <%  String id =  request.getParameter("categorie");
                            if ( id != null){
                            ProduitServices ps = new ProduitServices();
-                           for (Produit p : ps.findByCateg(cs.findCategorieById(Integer.parseInt(id)))){
-                           
-                           
-                           
+                           for (Produit p : ps.findByCateg(cs.findCategorieById(Integer.parseInt(id)))){   
                         %>   
                     <div class="col-md-4 text-center col-sm-6 col-xs-6">
                         <div class="thumbnail product-box">
@@ -125,14 +78,16 @@
                         
                     </div>
                     <%}}%>  
-                     
+                    </div>
+                </div> 
                     <div class="col-md-8">
 <table>
 
 </td>
 </tr>
-        </div>
-        </div>
+</div>
+                </div>
+       
       <!-- Required Js -->
     <script src="assets/js/vendor-all.min.js"></script>
     <script src="assets/js/plugins/bootstrap.min.js"></script>

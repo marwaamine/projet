@@ -80,7 +80,8 @@ public class AddtoCart extends HttpServlet {
             ProduitServices ps = new ProduitServices();
             Client tmp = (Client) us.getByEmail(email_client);
             Commande panier = cs.findPanier();
-            if(panier==null){
+           // response.getWriter().append("test : "+panier);
+           if(panier==null){
                 panier = new Commande(new Date(),tmp);
                 cs.AddCommande(panier);  
             }
@@ -103,12 +104,12 @@ public class AddtoCart extends HttpServlet {
                 ls.update(lctmp);
             }
                
-            RequestDispatcher rd = request.getRequestDispatcher("/panier.jsp");
-            rd.forward(request,response);
+           RequestDispatcher rd = request.getRequestDispatcher("/panier.jsp");
+           rd.forward(request,response);
 
        }
-        
-    }
+            }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

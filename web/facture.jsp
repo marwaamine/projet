@@ -1,3 +1,5 @@
+<%@page import="entities.Facture"%>
+<%@page import="services.FactureServices"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,22 +57,27 @@
                             <table class="table table-inverse">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Nombre de produits</th>
                                         <th>Montant</th>                                        
                                         <th>Date</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>                                      
-                                        <td></td>
-                                        
-                                    </tr>
-                                   
-                                </tbody>
+                           <tbody>   
+                            <%
+                               
+                           FactureServices fs= new FactureServices();
+                           
+                               for (Facture f: fs.findFactures()){
+                                
+                        %> 
+                            <tr>
+                                <td><%= f.getMontant() %> </td>
+                                <td><%= f.getDate() %></td>                             
+                               
+                                
+                            </tr>
+                          
+    <%}%> 
+                        </tbody>                                  
                             </table>
                         </div>
                     </div>
@@ -85,6 +92,20 @@
     <script src="assets/js/plugins/bootstrap.min.js"></script>
     <script src="assets/js/plugins/feather.min.js"></script>
     <script src="assets/js/pcoded.min.js"></script>
+    
+     <script src="js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+     <script src='js/jquery-3.2.1.min.js'></script>  
+  
+    <script src="js/panier.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+
+            $('#mi-slider').catslider();
+
+        });
+		</script>
+    
 </body>
 
 </html>

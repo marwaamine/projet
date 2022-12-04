@@ -109,7 +109,6 @@
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
      <script src='js/jquery-3.2.1.min.js'></script>  
   
-   
     <script src="js/panier.js" type="text/javascript"></script>
     <script>
         $(function () {
@@ -120,3 +119,4 @@
 		</script>
                  
     </body>
+        </html>

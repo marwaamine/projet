@@ -7,11 +7,13 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import services.FactureServices;
 
 /**
  *
@@ -20,19 +22,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Facture", urlPatterns = {"/Facture"})
 public class Facture extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          int montant = Integer.parseInt(request.getParameter("montant)"));
-          
+       double montant = Double.parseDouble(request.getParameter("somme"));
+        response.getWriter().append(""+montant);
+          FactureServices fs = new FactureServices();
+          fs.AddFacture(new entities.Facture(new Date(), montant));
+        response.sendRedirect("./facture.jsp");
+ 
     }
 
     @Override
