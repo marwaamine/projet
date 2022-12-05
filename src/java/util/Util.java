@@ -24,6 +24,4 @@ public class Util {
             return null;
         }
     }
-//Source : www.exelib.net
-    
 }

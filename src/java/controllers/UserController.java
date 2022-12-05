@@ -46,34 +46,23 @@ public class UserController extends HttpServlet {
         //int id = userServices.LoginUser(email,password);
          if(u != null){
              if(u.getPassword().equals(Util.md5(password))){
+               if(u.getEtat()==0){
+                    response.sendRedirect("../index.jsp"); 
+               }
+               if(u.getEtat()==1){
+                   response.sendRedirect("../dashboard.jsp");
+               }
                  int id_client=u.getId();
                  HttpSession session = request.getSession();
-                 //String mail= u.getEmail();
-                 
-        //  response.getWriter().append("id client est : "+id_client);
-             //session.setAttribute("idclient", id_client);
-         
-      session.setAttribute("user",u);
-                 
-               
-                // userServices.update(u);
-         if(u.getEtat()==0){
-                       
-                      response.sendRedirect("../index.jsp"); 
-                 }
-                 if(u.getEtat()==1){
-                     response.sendRedirect("../dashboard.jsp"); 
-                 }
-                         
-             }
-                
+                session.setAttribute("user",u);
+                // userServices.update(u);         
+             } 
              else {
                 response.sendRedirect("login.jsp?msg=mot de passe incorrect");
             }
         } else {
             response.sendRedirect("inscription.jsp?msg=Email introuvable");
-        }
-        
+        } 
  }
        
        //RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -140,10 +129,8 @@ public class UserController extends HttpServlet {
 
     private void mdob(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
-        
        User user = userServices.getByEmail(email);
         if (user != null) {
-          
             double i = Math.random() * 100000;
             String code = (i + "").substring(0, 4);
             user.setCode(code);
@@ -151,12 +138,11 @@ public class UserController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             SendMail sed = new SendMail();
-           
             //response.getWriter().append(""+email).toString();
             if( sed.send(code,email))
             response.sendRedirect("../codeverification.jsp");
             else {
-                response.getWriter().append("ma kynash cnx");
+                response.getWriter().append("ERROR");
             }
         } 
 }
@@ -164,12 +150,11 @@ public class UserController extends HttpServlet {
            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         int code = Integer.parseInt(request.getParameter("code"));
-        
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user != null) {
             if (Integer.parseInt(user.getCode())==code) {
-                response.sendRedirect("updatemotdepasse.jsp");
+                response.sendRedirect("newpassword.jsp");
             } else {
                 response.sendRedirect("../codeverification.jsp?msg= le code est incorrect!! ");
             }

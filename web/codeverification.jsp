@@ -16,10 +16,11 @@
     <body>
         <div class="container">
         <div class="text">Code verification</div>
-        <form action="/user/verifierCode">
+      
+        <form action="<%=request.getContextPath()%>/user/verifierCode" method="post">
            <div class="form-row">
               <div class="input-data">
-                  <input type="text"  required>
+                  <input id = "code" type="text"  required>
                  <div class="underline"></div>
                  <label for="">Entrez le code</label>
               </div>             
@@ -27,7 +28,7 @@
                  <div class="form-row submit-btn">
                     <div class="input-data">
                        <div class="inner"></div>
-                       <input type="submit" value="Entrer">
+                       <input  type="submit" value="Entrer">
                     </div>
                 
               </div>

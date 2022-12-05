@@ -213,7 +213,7 @@ public class AdminController extends HttpServlet {
     private void AddCategorie(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String categorie = request.getParameter("categorie");
         if (categorieServices.AddCategorie(new Categorie(categorie))) {
-            response.getWriter().append("Categorie bien ajouté");
+            response.sendRedirect("../categories.jsp");
         }
     }
 
@@ -226,8 +226,7 @@ public class AdminController extends HttpServlet {
         String marque = request.getParameter("marque");
         if (marqueServices.AddMarque(new Marque(marque))) {
             //response.getWriter().append("Marque bien ajouté");
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/marques.jsp");
-            dispatcher.forward(request, response);
+             response.sendRedirect("../marques.jsp");
         }
     }
 
