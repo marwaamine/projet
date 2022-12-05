@@ -35,7 +35,7 @@ public class Test {
         ProduitServices ps = new ProduitServices();
         MarqueServices ms = new MarqueServices();
          CategorieServices cs = new CategorieServices();
-        // us.CreateUser(new Admin("admin@gmail.com", Util.md5("admin123")));
+      us.CreateUser(new Admin("admin@gmail.com", Util.md5("admin123"),1,null));
       
      //   ps.AddProduit(new Produit("dell", "dell core i5", "pc dell", 25000, "xx", 2));
         // ms.AddMarque(new Marque(1, "HP"));
