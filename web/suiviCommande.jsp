@@ -1,3 +1,4 @@
+<%@page import="entities.LigneCommandePK"%>
 <%@page import="services.CommandeServices"%>
 <%@page import="entities.Commande"%>
 <%@page import="services.ProduitServices"%>
@@ -66,10 +67,22 @@
                         </thead>
                           <tbody>   
                             <%
+                            double somme =0;
+                           ProduitServices ps = new ProduitServices();
+                           LigneCommandePK lcpk = new LigneCommandePK();
+                           LigneCommande lc = new LigneCommande();
+                           Commande cc = new Commande();
                            CommandeServices cs= new CommandeServices();
                            LigneCommandeServices ls= new LigneCommandeServices();
                            for (Commande c :cs.findCommandes()){
                                for (LigneCommande l: ls.findAll()){
+                                   somme = somme+(l.getQuantité()*l.getPrixVente());
+                               
+                        %> 
+                         <%
+                           
+                           
+                          
                         %> 
                             <tr>
                                 
@@ -81,10 +94,12 @@
                       
     <%}}%> 
                         </tbody>
-                     
+                  
                        
                     </table>
-                   
+                      <form >
+                      <button type="submit" class="btn btn-success" style="margin-left: 850px"> <a href="./Facture?somme=<%=somme%>">Facture</button>
+                    </form>
                 </div>
             </div>
         </div>

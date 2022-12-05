@@ -64,7 +64,7 @@
                                 <th scope="col">Produit</th>
                                 <th scope="col">Quantite</th>
                                 <th scope="col">Prix</th>
-                                <th scope="col">Supprimer</th>
+                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,7 +86,7 @@
                                 <td><%= l.getQuantité() %></td>
                                 <td><%= l.getPrixVente() %></td>
                                 
-                                <td><button type="button" class="button-85 supprimer"> <a href="./DeleteCommande?idproduit=<%= l.getProduit().getId()%>&idcommande=<%= l.getCommande().getId()%>">Supprimer</button></td>
+                                <td><button type="button" class="btn btn-danger"> <a href="./DeleteCommande?idproduit=<%= l.getProduit().getId()%>&idcommande=<%= l.getCommande().getId()%>">Supprimer</button></td>
                                 
                             </tr>
                          <%}%>  
@@ -103,11 +103,9 @@
         </tfoot>
                     </table>
                     <form >
-                        <button type="submit" class="button-85" style="margin-left: 850px"> <a href="suiviCommande.jsp">Commander</button>
+                        <button type="submit" class="btn btn-success" style="margin-left: 850px"> <a href="suiviCommande.jsp">Commander</button>
                     </form>
-                  <form >
-                      <button type="submit" class="button-85" style="margin-left: 850px"> <a href="./Facture?somme=<%=somme%>">Facture</button>
-                    </form>
+                  
                 </div>
             </div>
         </div>
