@@ -104,6 +104,7 @@
                 <div class="underline"></div>
                 <label for="marques">Marque:</label>                    
                     <div style="width:200px; ">
+                        <br> 
                         <select id="marques" name="marques" ></select> 
                     </div>
                 </div>
@@ -112,6 +113,7 @@
                 <div class="underline"></div>
                 <label for="categories">Catégorie:</label>                    
                     <div style="width:200px;">
+                        <br> 
                         <select id="categories" name="categories" ></select> 
                     </div>
                 </div>                

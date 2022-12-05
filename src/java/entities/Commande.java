@@ -35,7 +35,7 @@ public class Commande implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private Date date;
     
     

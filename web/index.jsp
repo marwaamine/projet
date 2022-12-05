@@ -72,7 +72,6 @@
                                <!-- HTML !-->
                                <button class="button-85"  type="submit"  >  Ajouter au panier</button>
                                </form>
-
                             </div>
                         </div>
                         
